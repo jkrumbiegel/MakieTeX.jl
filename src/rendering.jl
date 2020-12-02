@@ -44,11 +44,18 @@ function dvi2svg(
     # a working TeX installation should have these utilities available.
     dvisvgm = open(`$(DVISVGM_PATH[]) --bbox=$bbox $options --no-fonts --stdin --stdout`, "r+")
 
+    open("test.dvi", "w") do file
+        print(file, String(copy(dvi)))
+    end
+
+
     write(dvisvgm, dvi)
 
     close(dvisvgm.in)
 
-    return read(dvisvgm.out, String) # read the SVG in as a String
+    svg = read(dvisvgm.out, String) # read the SVG in as a String
+    @show svg
+    return svg
 end
 
 function pdf2svg(pdf::Vector{UInt8})

@@ -1,5 +1,6 @@
 module MakieTeX
-using AbstractPlotting, CairoMakie, MakieLayout
+using AbstractPlotting, CairoMakie
+using AbstractPlotting.MakieLayout
 using Rsvg, Cairo
 using Colors, LaTeXStrings
 
